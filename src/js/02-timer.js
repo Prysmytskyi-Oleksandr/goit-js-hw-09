@@ -4,13 +4,15 @@ import 'flatpickr/dist/flatpickr.min.css';
 let timerId = null;
 let startTimerBtn = null;
 
-startTimerBtn = document.querySelector('.start');
-timerFieldDays = document.querySelector('[data-days]');
-timerFielHours = document.querySelector('[data-hours]');
-timerFieldMinutes = document.querySelector('[data-minutes]');
-timerFieldSeconds = document.querySelector('[data-seconds]');
+const refs = {
+  startTimerBtn : document.querySelector('[data-start]'),
+  timerFieldDays : document.querySelector('[data-days]'),
+  timerFielHours : document.querySelector('[data-hours]'),
+  timerFieldMinutes : document.querySelector('[data-minutes]'),
+  timerFieldSeconds : document.querySelector('[data-seconds]'),
+};
 
-startTimerBtn.setAttribute('disabled', true);
+refs.startTimerBtn.setAttribute('disabled', true);
 
 
 
@@ -23,7 +25,7 @@ const options = {
       const currentDate = new Date();
     
     if (selectedDates[0] - currentDate > 0) {
-      startTimerBtn.removeAttribute('disabled');
+      refs.startTimerBtn.removeAttribute('disabled');
     } else {    
         alert('Please choose a date in the future');
       }     
@@ -51,14 +53,14 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-startTimerBtn.addEventListener('click', onTimerStart);
+refs.startTimerBtn.addEventListener('click', onTimerStart);
 
 function onTimerStart() {
   const selectedDate = flatPickr.selectedDates[0];
 
   timerId = setInterval(() => {
     const intervalTime = selectedDate - new Date();
-      startTimerBtn.disabled = true;
+      refs.startTimerBtn.disabled = true;
 
       if (intervalTime < 0) {
       clearInterval(timerId);
@@ -69,10 +71,10 @@ function onTimerStart() {
 }
 
 function updateTimer({ days, hours, minutes, seconds }) {
-  timerFieldDays.textContent = days;
-  timerFielHours.textContent = hours;
-  timerFieldMinutes.textContent = minutes;
-  timerFieldSeconds.textContent = seconds;
+  refs.timerFieldDays.textContent = days;
+  refs.timerFielHours.textContent = hours;
+  refs.timerFieldMinutes.textContent = minutes;
+  refs.timerFieldSeconds.textContent = seconds;
 }
 
 
