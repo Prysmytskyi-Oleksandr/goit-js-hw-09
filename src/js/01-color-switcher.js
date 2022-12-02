@@ -8,7 +8,7 @@ function onButStartClick(event) {
     timerId = setInterval(() => {
         document.body.style.backgroundColor = getRandomHexColor();
     }, 1000);
-    event.currentTarget.setAttribute('disabled', 'true'); 
+    event.currentTarget.setAttribute('disabled', true); 
     butStopEl.removeAttribute('disabled');    
 }
 
@@ -17,7 +17,7 @@ function getRandomHexColor() {
 }
 
 function onButStopClick(event) {
-    event.currentTarget.setAttribute('disabled', 'true');
+    event.currentTarget.setAttribute('disabled', true);
     butStartEl.removeAttribute('disabled');
     clearInterval(timerId);
 }
