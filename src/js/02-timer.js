@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 let timerId = null;
-let startTimerBtn = null;
+
 
 const refs = {
   startTimerBtn : document.querySelector('[data-start]'),
