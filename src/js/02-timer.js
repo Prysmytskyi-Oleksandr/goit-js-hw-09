@@ -1,15 +1,18 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
-btnTimerStart = document.querySelector('[data-start]');
+let timerId = null;
+
+
+startTimerBtn = document.querySelector('[data-start]');
 timerFieldDays = document.querySelector('[data-days]');
 timerFielHours = document.querySelector('[data-hours]');
 timerFieldMinutes = document.querySelector('[data-minutes]');
 timerFieldSeconds = document.querySelector('[data-seconds]');
 
-btnTimerStart.setAttribute('disabled', true);
+startTimerBtn.setAttribute('disabled', true);
 
-let timerId = null;
+
 
 const options = {
   enableTime: true,
@@ -20,7 +23,7 @@ const options = {
       const currentDate = new Date();
     
     if (selectedDates[0] - currentDate > 0) {
-      btnTimerStart.removeAttribute('disabled');
+      startTimerBtn.removeAttribute('disabled');
     } else {    
         alert('Please choose a date in the future');
       }     
@@ -48,14 +51,14 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-btnTimerStart.addEventListener('click', onTimerStart);
+startTimerBtn.addEventListener('click', onTimerStart);
 
 function onTimerStart() {
   const selectedDate = flatPickr.selectedDates[0];
 
   timerId = setInterval(() => {
     const intervalTime = selectedDate - new Date();
-      btnTimerStart.disabled = true;
+      startTimerBtn.disabled = true;
 
       if (intervalTime < 0) {
       clearInterval(timerId);
