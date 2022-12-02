@@ -4,7 +4,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 let timerId = null;
 
 
-startTimerBtn = document.querySelector('[data-start]');
+startTimerBtn = document.querySelector('.start');
 timerFieldDays = document.querySelector('[data-days]');
 timerFielHours = document.querySelector('[data-hours]');
 timerFieldMinutes = document.querySelector('[data-minutes]');
